@@ -1,17 +1,17 @@
-import { FC } from 'react';
-import { Field, withDatasourceCheck } from '@sitecore-jss/sitecore-jss-nextjs';
-import { ComponentProps } from 'lib/component-props';
+// import { FC } from 'react';
+// import { Field, withDatasourceCheck } from '@sitecore-jss/sitecore-jss-nextjs';
+// import { ComponentProps } from 'lib/component-props';
 import Slider from 'react-slick';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import slider_1 from '../../assets/images/slider_1.jpg';
 import slider_2 from '../../assets/images/slider_2.jpg';
 
-interface PromotionalBannerProps extends ComponentProps {
-  fields: {
-    heading: Field<string>;
-    images: Array<StaticImageData>;
-  };
-}
+// interface PromotionalBannerProps extends ComponentProps {
+//   fields: {
+//     heading: Field<string>;
+//     images: Array<StaticImageData>;
+//   };
+// }
 
 const settings = {
   // dots: true,
@@ -22,12 +22,14 @@ const settings = {
   arrows: true,
 };
 
-const PromotionalBanner: FC<PromotionalBannerProps> = ({ fields }) => {
-  fields.images = [slider_1, slider_2];
+const images = [slider_1, slider_2];
+const PromotionalBanner = () => {
+  // fields.images = [slider_1, slider_2];
+  // { fields }
   return (
     <>
       <Slider {...settings}>
-        {fields?.images.map((image, index) => {
+        {images.map((image, index) => {
           return <Image key={index} src={image} alt="image" />;
         })}
       </Slider>
@@ -35,4 +37,4 @@ const PromotionalBanner: FC<PromotionalBannerProps> = ({ fields }) => {
   );
 };
 
-export default withDatasourceCheck()<PromotionalBannerProps>(PromotionalBanner);
+export default PromotionalBanner;

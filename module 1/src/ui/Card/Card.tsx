@@ -5,14 +5,7 @@ import { FC } from 'react';
 // import { ComponentProps } from 'lib/component-props';
 // import cardImg from '../assets/images/cardImg.webp';
 import { StaticImageData } from 'next/image';
-import {
-  CardWrapper,
-  ImageWrapper,
-  Heading,
-  Desc,
-  CardContainer,
-  ContentWrapper,
-} from './Card.styled';
+import { CardWrapper, ImageWrapper, Heading, Desc, ContentWrapper } from './Card.styled';
 
 interface CardProps {
   fields: {
@@ -28,22 +21,19 @@ interface CardProps {
 const Card: FC<CardProps> = ({ fields }) => {
   return (
     <>
-      <CardContainer>
-        <h2>{fields.title}</h2>
-        <CardWrapper>
-          <ContentWrapper>
-            <Heading>Key Trials</Heading>
-            <Desc>
-              Antipyretic Efficacy of Paracetamol, Ibuprofen and Paracetamol-ibuprofen Combination
-              in Indian Child
-            </Desc>
-            <p>1 Mar, 23</p>
-          </ContentWrapper>
-          <ImageWrapper>
-            <NextImage field={fields.data.imgSrc} alt="" />
-          </ImageWrapper>
-        </CardWrapper>
-      </CardContainer>
+      <CardWrapper>
+        <ContentWrapper>
+          <Heading>Key Trials</Heading>
+          <Desc>
+            Antipyretic Efficacy of Paracetamol, Ibuprofen and Paracetamol-ibuprofen Combination in
+            Indian Child
+          </Desc>
+          <p>1 Mar, 23</p>
+        </ContentWrapper>
+        <ImageWrapper>
+          <NextImage field={fields.data.imgSrc} alt="" />
+        </ImageWrapper>
+      </CardWrapper>
     </>
   );
 };

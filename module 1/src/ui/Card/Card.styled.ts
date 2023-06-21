@@ -10,6 +10,7 @@ export const CardWrapper = styled.div`
   grid-template-rows: 140px;
   padding: 1rem 1rem;
   border-radius: 1rem;
+  margin-bottom: 1rem;
 
   &:hover {
     box-shadow: 3px 8px 18px rgba(41, 44, 79, 0.2);

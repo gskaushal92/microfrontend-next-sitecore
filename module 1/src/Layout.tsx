@@ -6,11 +6,14 @@ import {
   LayoutServiceData,
   Field,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import DefaultNavigation from 'src/DefaultNavigation';
+// import DefaultNavigation from 'src/DefaultNavigation';
 import Scripts from 'src/Scripts';
-// import Featured from 'components/Featured/Featured';
-// import WelcomeCard from 'components/WelcomeCard/WelcomeCard';
+import Featured from 'components/Featured/Featured';
+import WelcomeCard from 'components/WelcomeCard/WelcomeCard';
 import Navigation from 'components/Navigation/Navigation';
+import Logo from 'components/Logo/Logo';
+// import HeroCarousel from 'sitecore/definitions/components/HeroCarousel.sitecore';
+import PromotionalBanner from 'components/PromotionalBanner';
 // import Card from './ui/Card/Card';
 // import cardImg from './assets/images/cardImg.webp';
 
@@ -27,6 +30,7 @@ interface RouteFields {
   pageTitle: Field;
 }
 
+// const data = {};
 // const data = {
 //   title: 'test',
 //   data: {
@@ -48,10 +52,17 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
         <title>{fields.pageTitle.value.toString() || 'Page'}</title>
         <link rel="icon" href={`${publicUrl}/favicon.ico`} />
       </Head>
-      <Navigation />
-      {/* <Featured />
-      <WelcomeCard /> */}
-      <DefaultNavigation />
+      <div className="nav-container">
+        <Logo />
+        <Navigation />
+      </div>
+
+      <WelcomeCard />
+
+      <Featured />
+      <PromotionalBanner />
+      {/* <HeroCarousel /> */}
+      {/* <DefaultNavigation /> */}
       {/* root placeholder for the app, which we add components to using route data */}
       <div className="container">{route && <Placeholder name="jss-main" rendering={route} />}</div>
     </>
