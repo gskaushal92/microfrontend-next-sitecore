@@ -1,0 +1,11 @@
+{
+  "sitecore": {
+    "instancePath": "C:\\inetpub\\wwwroot\\nextjss.dev.local",
+    "apiKey": "{B34C2004-43AC-4C9F-806B-8D95272B00DE}",
+    "deploySecret": "ost7ccmz90o9fpoviesio6nylfqzxsyz2g2nc05zgci",
+    "deployUrl": "https://6132-210-89-62-6.ngrok-free.app/sitecore/api/jss/import",
+    "layoutServiceHost": "https://6132-210-89-62-6.ngrok-free.app/"
+  }
+}
+
+
