@@ -46,12 +46,13 @@ type NavigationProps = ComponentProps & {
   };
 };
 
-const url = {
-  href: "http://localhost:81/brand",
-};
+// const url = {
+//   href: "http://localhost:81/brand",
+// };
 
 const Navigation: FC<NavigationProps> = ({ fields }): JSX.Element => {
   const navs = fields?.data?.item?.children?.results;
+  console.log('navs',navs);
   return (
     <Navul>
       {navs.map((nav, index) => (
@@ -61,7 +62,7 @@ const Navigation: FC<NavigationProps> = ({ fields }): JSX.Element => {
             <NavSubul>
               {nav?.children?.results?.map((subnav, index) => (
                 <li key={subnav?.title?.value + index}>
-                  <Link field={url}>{subnav?.title?.value}</Link>
+                  <Link field={subnav.field.jsonValue.value}>{subnav?.title?.value}</Link>
                 </li>
               ))}
             </NavSubul>

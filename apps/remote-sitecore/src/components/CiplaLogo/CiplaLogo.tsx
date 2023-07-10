@@ -20,11 +20,11 @@ type CiplaLogoMenuProps = ComponentProps & {
   };
 };
 
-const CiplaLogo = (props: CiplaLogoMenuProps): JSX.Element => {
+const CiplaLogo = ({ fields }: CiplaLogoMenuProps): JSX.Element => {
   return (
     <div>
-      <Link field={{ href: 'http://localhost:81/' }}>
-        <LogoImg field={props?.fields?.data?.item?.srcimage} alt="" width={100} height={100} />
+      <Link field={{ href: fields?.data?.item?.srcurl?.url }}>
+        <LogoImg field={fields?.data?.item?.srcimage} alt="" width={100} height={100} />
       </Link>
     </div>
   );
