@@ -33,9 +33,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@module-federation/nextjs-mf": "^6.5.1",
     "@sitecore-jss/sitecore-jss-nextjs": "~21.1.7",
-    "bootstrap": "^5.2.3",
     "graphql": "~15.8.0",
     "graphql-tag": "^2.12.6",
     "next": "^13.1.6",
