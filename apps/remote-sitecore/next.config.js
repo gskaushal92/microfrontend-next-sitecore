@@ -1,7 +1,7 @@
 const jssConfig = require('./src/temp/config');
 const { getPublicUrl } = require('@sitecore-jss/sitecore-jss-nextjs');
 const plugins = require('./src/temp/next-config-plugins') || {};
-const NextFederationPlugin = require('@module-federation/nextjs-mf');
+// const NextFederationPlugin = require('@module-federation/nextjs-mf');
 const { dependencies } = require('./package.json');
 
 const publicUrl = getPublicUrl();
