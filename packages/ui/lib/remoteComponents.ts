@@ -4,5 +4,7 @@ type RemoteComponentType = {
 }
 
 export const remoteComponents: RemoteComponentType[] = [
-  { componentName: "Navigation", path: "ui/Navigation/Navigation" },
+  { componentName: "Navigation", path: "ui/components/Navigation/Navigation" },
+  { componentName: "Grid", path: "ui/components/Grid/Grid" },
+  { componentName: "CiplaLogo", path: "ui/components/CiplaLogo/CiplaLogo" },
 ];

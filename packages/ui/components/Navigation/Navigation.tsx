@@ -1,37 +1,76 @@
 import { FC } from "react";
-import { NavigationWrapper, NavUl, NavLi } from "./Navigation.styles";
-import { Link, LinkField } from "@sitecore-jss/sitecore-jss-nextjs";
+import { Navul, NavSubul } from "./Navigaion.styles";
+import Link from 'next/link';
+// import { Link } from "@sitecore-jss/sitecore-jss-nextjs";
 
-type NavigationProps = {
-    nav: string;
-    link:  LinkField;
+import { ComponentProps } from "../../../lib/component-props";
+
+type Nav = {
+  displayName: string;
+  field: {
+    jsonValue: {
+      value: {
+        anchor: string;
+
+        href: string;
+
+        linktype: string;
+
+        target: string;
+
+        text: string;
+
+        url: string;
+      };
+    };
+  };
+  title: {
+    value: string;
+  };
 };
 
-const url = "https://google.com";
-const navData = [
-  { nav: "Vehicles", link: { href: url } },
-  { nav: "About Us", link: { href: url } },
-  { nav: "Services", link: { href: url } },
-  { nav: "Media", link: { href: url } },
-  { nav: "Rewards", link: { href: url } },
-  { nav: "Program", link: { href: url } },
-  { nav: "Ease of Finance", link: { href: url } },
-  { nav: "Testimonials", link: { href: url } },
-  { nav: "Product Application", link: { href: url } },
-  { nav: "English", link: { href: url } },
-];
+type MainNav = Nav & {
+  children: {
+    results: Array<Nav>;
+  };
+};
 
-const Navigation: FC<NavigationProps[]> = ({}) => {
+type NavigationProps = ComponentProps & {
+  fields: {
+    data: {
+      item: {
+        children: {
+          results: Array<MainNav>;
+        };
+      };
+    };
+  };
+};
+
+// const url = {
+//   href: "http://localhost:81/brand",
+// };
+
+const Navigation: FC<NavigationProps> = ({ fields }): JSX.Element => {
+  const navs = fields?.data?.item?.children?.results;
+  console.log('navs',navs);
   return (
-    <NavigationWrapper>
-      <NavUl>
-        {navData.map((nav, index) => (
-          <NavLi key={nav.nav + index}>
-            <Link field={nav.link}>{nav.nav}</Link>
-          </NavLi>
-        ))}
-      </NavUl>
-    </NavigationWrapper>
+    <Navul>
+      {navs.map((nav, index) => (
+        <li key={nav?.title?.value + index}>
+          {nav?.title?.value}
+          {nav?.children?.results?.length > 0 && (
+            <NavSubul>
+              {nav?.children?.results?.map((subnav, index) => (
+                <li key={subnav?.title?.value + index}>
+                  <Link href={subnav.field.jsonValue.value.href}>{subnav?.title?.value}</Link>
+                </li>
+              ))}
+            </NavSubul>
+          )}
+        </li>
+      ))}
+    </Navul>
   );
 };
 

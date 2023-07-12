@@ -2,7 +2,7 @@
 import { Link } from '@sitecore-jss/sitecore-jss-nextjs';
 import { LogoImg } from './CiplaLogo.styles';
 // import cmLogo from '../../assets/images/CM_New_Final-02.png';
-import { ComponentProps } from 'lib/component-props';
+import { ComponentProps } from '../../../lib/component-props';
 
 type CiplaLogoMenuProps = ComponentProps & {
   fields: {
