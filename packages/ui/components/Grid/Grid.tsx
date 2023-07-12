@@ -10,7 +10,6 @@ type ValueField = {
 
 type ColumnField = {
   heading: ValueField;
- 
 };
 
 type GridProps = {
@@ -67,8 +66,11 @@ const Grid: FC<GridProps> = (props) => {
       {columns.map((column, index): JSX.Element => {
         // return <div key={index}>col 1</div>;
         return (
-          <div key={`grid${index}`}>
-            <Placeholder name={`col ${index + 1}`} rendering={props.rendering} />
+          <div key={`${column?.heading.value + index}`}>
+            <Placeholder
+              name={`col ${index + 1}`}
+              rendering={props.rendering}
+            />
           </div>
         );
       })}
