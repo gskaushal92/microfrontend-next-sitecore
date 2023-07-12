@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Navul, NavSubul } from "./Navigaion.styles";
-import Link from 'next/link';
-// import { Link } from "@sitecore-jss/sitecore-jss-nextjs";
+// import Link from 'next/link';
+import { Link } from "@sitecore-jss/sitecore-jss-nextjs";
 
 import { ComponentProps } from "../../../lib/component-props";
 
@@ -53,7 +53,7 @@ type NavigationProps = ComponentProps & {
 
 const Navigation: FC<NavigationProps> = ({ fields }): JSX.Element => {
   const navs = fields?.data?.item?.children?.results;
-  console.log('navs',navs);
+  console.log("navs", navs);
   return (
     <Navul>
       {navs.map((nav, index) => (
@@ -63,7 +63,9 @@ const Navigation: FC<NavigationProps> = ({ fields }): JSX.Element => {
             <NavSubul>
               {nav?.children?.results?.map((subnav, index) => (
                 <li key={subnav?.title?.value + index}>
-                  <Link href={subnav.field.jsonValue.value.href}>{subnav?.title?.value}</Link>
+                  <Link field={{ href: subnav.field.jsonValue.value.href }}>
+                    {subnav?.title?.value}
+                  </Link>
                 </li>
               ))}
             </NavSubul>
