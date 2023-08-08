@@ -3,7 +3,7 @@
     "instancePath": "C:\\inetpub\\wwwroot\\msilcm.dev.local",
     "apiKey": "{C2FE26CF-F0F2-45EF-AB1F-BEDFAAEC054E}",
     "deploySecret": "ost7ccmz90o9fpoviesio6nylfqzxsyz2g2nc05zgci",
-    "deployUrl": " https://aea6-210-89-62-246.ngrok-free.app/api/jss/import",
-    "layoutServiceHost": " https://aea6-210-89-62-246.ngrok-free.app"
+    "deployUrl": "https://1a9e-103-40-196-126.ngrok-free.app/api/jss/import",
+    "layoutServiceHost": "https://1a9e-103-40-196-126.ngrok-free.app"
   }
 }
