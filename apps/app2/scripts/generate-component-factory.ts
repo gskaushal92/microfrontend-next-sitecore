@@ -69,12 +69,12 @@ function writeComponentFactory() {
    *    ]
    *  }
    */
-  const packages: PackageDefinition[] = [];
+  const packages: PackageDefinition[] = [remoteComponents];
   const components = getComponentList(componentRootPath);
 
   components.unshift(...packages);
 
-  const fileContent = generateComponentFactory(components, remoteComponents);
+  const fileContent = generateComponentFactory(components);
   console.log(`Writing component factory to ${componentFactoryPath}`);
   fs.writeFileSync(componentFactoryPath, fileContent, {
     encoding: 'utf8',

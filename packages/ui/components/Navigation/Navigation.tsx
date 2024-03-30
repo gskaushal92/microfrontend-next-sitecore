@@ -1,79 +1,33 @@
+import { Field } from "@sitecore-jss/sitecore-jss-nextjs";
 import { FC } from "react";
-import { Navul, NavSubul } from "./Navigaion.styles";
-// import Link from 'next/link';
-import { Link } from "@sitecore-jss/sitecore-jss-nextjs";
+import { navigationData } from "./data";
+import { NavContainer, NavList, NavItem, NavLink } from "./Navigaion.styles";
 
-import { ComponentProps } from "../../../lib/component-props";
-
-type Nav = {
-  displayName: string;
-  field: {
-    jsonValue: {
-      value: {
-        anchor: string;
-
-        href: string;
-
-        linktype: string;
-
-        target: string;
-
-        text: string;
-
-        url: string;
-      };
-    };
-  };
-  title: {
-    value: string;
-  };
-};
-
-type MainNav = Nav & {
-  children: {
-    results: Array<Nav>;
-  };
-};
-
-type NavigationProps = ComponentProps & {
+type NavProps = {
   fields: {
     data: {
-      item: {
-        children: {
-          results: Array<MainNav>;
+      datasource: {
+        heading: {
+          jsonValue: Field<string>;
         };
       };
     };
   };
 };
 
-// const url = {
-//   href: "http://localhost:81/brand",
-// };
-
-const Navigation: FC<NavigationProps> = ({ fields }): JSX.Element => {
-  const navs = fields?.data?.item?.children?.results;
-  console.log("navs", navs);
+const Nav: FC<NavProps> = ({ fields }) => {
+  const datasource = navigationData?.fields?.data?.datasource;
   return (
-    <Navul>
-      {navs.map((nav, index) => (
-        <li key={nav?.title?.value + index}>
-          {nav?.title?.value}
-          {nav?.children?.results?.length > 0 && (
-            <NavSubul>
-              {nav?.children?.results?.map((subnav, index) => (
-                <li key={subnav?.title?.value + index}>
-                  <Link field={{ href: subnav.field.jsonValue.value.href }}>
-                    {subnav?.title?.value}
-                  </Link>
-                </li>
-              ))}
-            </NavSubul>
-          )}
-        </li>
-      ))}
-    </Navul>
+    <NavContainer>
+      <NavList>
+        {datasource?.children.map((item) => (
+          <NavItem key={item.id}>
+            <NavLink href={item.path}>{item.title}</NavLink>
+          </NavItem>
+        ))}
+      </NavList>
+    </NavContainer>
   );
 };
 
-export default Navigation;
+export default Nav;

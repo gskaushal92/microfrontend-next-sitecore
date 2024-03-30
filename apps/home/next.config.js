@@ -10,6 +10,9 @@ const publicUrl = getPublicUrl();
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  images: {
+    domains: ['msilcm.dev.local']
+  },
   transpilePackages: ['ui'],
   // Set assetPrefix to our public URL
   assetPrefix: publicUrl,

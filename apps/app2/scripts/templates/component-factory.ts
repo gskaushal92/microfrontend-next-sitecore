@@ -15,11 +15,6 @@ export interface PackageDefinition {
   }[];
 }
 
-type RemoteComponent = {
-  componentName: string;
-  path: string;
-};
-
 const isLazyLoadingModule = (componentPath: string) => componentPath.includes('.dynamic');
 
 const removeDynamicModuleNameEnding = (moduleName: string) =>
@@ -30,10 +25,7 @@ const removeDynamicModuleNameEnding = (moduleName: string) =>
  * @param components - the list of component files to include
  * @returns component factory file contents
  */
-function generateComponentFactory(
-  components: (PackageDefinition | ComponentFile)[],
-  remoteComponents: Array<RemoteComponent>
-): string {
+function generateComponentFactory(components: (PackageDefinition | ComponentFile)[]): string {
   const componentFiles = components.filter(
     (component) => (component as ComponentFile).path
   ) as ComponentFile[];
@@ -70,10 +62,6 @@ ${componentFiles
 
     // importing remote module
 
-${remoteComponents
-  .map((component) => `import * as ${component.componentName} from '${component.path}';`)
-  .join('\n')}
-
 const components = new Map();
 ${packages.map((p) =>
   p.components.map(
@@ -93,11 +81,6 @@ ${componentFiles
           : component.moduleName
       });`
   )
-  .join('\n')}
-
-   // setting external module
-${remoteComponents
-  .map((component) => `components.set('${component.componentName}', ${component.componentName})`)
   .join('\n')}
 
 // Next.js 'dynamic' import and JavaScript 'dynamic' import are different.

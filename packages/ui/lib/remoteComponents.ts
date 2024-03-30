@@ -1,10 +1,21 @@
 type RemoteComponentType = {
-    componentName: string;
-    path: string;
-}
+  name: string;
+  components: ComponentProp[];
+};
 
-export const remoteComponents: RemoteComponentType[] = [
-  { componentName: "Navigation", path: "ui/components/Navigation/Navigation" },
-  { componentName: "Grid", path: "ui/components/Grid/Grid" },
-  { componentName: "CiplaLogo", path: "ui/components/CiplaLogo/CiplaLogo" },
-];
+type ComponentProp = {
+  componentName: string;
+  moduleName: string;
+};
+
+export const remoteComponents: RemoteComponentType = {
+  name: "Remote Components",
+  components: [
+    {
+      componentName: "Navigation",
+      moduleName: "ui/components/Navigation/Navigation",
+    },
+    { componentName: "Logo", moduleName: "ui/components/Logo/Logo" },
+    { componentName: "Footer", moduleName: "ui/components/Footer/Footer" },
+  ],
+};
